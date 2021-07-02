@@ -86,7 +86,7 @@ extern int sys_chdir(void);
 extern int sys_close(void);
 extern int sys_dup(void);
 extern int sys_exec(void);
-extern int sys_exit(void);
+extern int sys_exit(int status); //lab 1 changes
 extern int sys_fork(void);
 extern int sys_fstat(void);
 extern int sys_getpid(void);
