@@ -23,7 +23,7 @@ sys_exit(int status)
 int
 sys_wait(int *status) // lab 1 changes
 {
-  return wait(pid, &status, options);
+  return wait(&status);
 }
 
 int
