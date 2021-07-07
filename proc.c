@@ -270,8 +270,13 @@ exit(int status)
 
 // Wait for a child process to exit and return its pid.
 // Return -1 if this process has no children.
+<<<<<<< HEAD
 int 
 wait(int *status) // Lab 1 changes 
+=======
+int
+wait(int pid, int *status, int options) // lab 1 changes
+>>>>>>> 8b3f7a54dc84bbb1327b922333f9bc653ff572e5
 {
   struct proc *p;
   int havekids, pid;
