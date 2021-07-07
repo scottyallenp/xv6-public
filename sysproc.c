@@ -21,9 +21,9 @@ sys_exit(int status)
 }
 
 int
-sys_wait(void)
+sys_wait(int pid, int *status, int options) // lab 1 changes
 {
-  return wait();
+  return wait(pid, &status, options);
 }
 
 int
