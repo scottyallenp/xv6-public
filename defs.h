@@ -118,6 +118,7 @@ void            setproc(struct proc*);
 void            sleep(void*, struct spinlock*);
 void            userinit(void);
 int             wait(int *status); // lab 1 changes
+int             waitpid(int pid, int *status, int changes);
 void            wakeup(void*);
 void            yield(void);
 

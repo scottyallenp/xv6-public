@@ -312,7 +312,13 @@ wait(int *status) // Lab 1 changes
     sleep(curproc, &ptable.lock);  //DOC: wait-sleep
   }
 }
+/*
+int
+waitpid(int pid, int *status, int options) // lab 1 changes
+{
 
+}
+*/
 //PAGEBREAK: 42
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.

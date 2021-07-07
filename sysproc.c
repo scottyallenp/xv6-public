@@ -25,7 +25,13 @@ sys_wait(int *status) // lab 1 changes
 {
   return wait(&status);
 }
+/*
+int
+sys_waitpid(int pid, int *status, int options) // lab 1 changes
+{
 
+}
+*/
 int
 sys_kill(void)
 {
