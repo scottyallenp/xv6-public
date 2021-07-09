@@ -288,6 +288,9 @@ wait(int *status) // Lab 1 changes
       havekids = 1;
       if(p->state == ZOMBIE){
         // Found one.
+        if (status) {   // lab 1 changes
+          *status = p->status; // lab 1 changes
+        } // lab 1 changes
         pid = p->pid;
         kfree(p->kstack);
         p->kstack = 0;
