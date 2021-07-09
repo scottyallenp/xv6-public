@@ -93,7 +93,7 @@ runcmd(struct cmd *cmd)
     lcmd = (struct listcmd*)cmd;
     if(fork1() == 0)
       runcmd(lcmd->left);
-    wait();
+    wait(p); // lab 1 changes wait is this correct
     runcmd(lcmd->right);
     break;
 
@@ -117,8 +117,8 @@ runcmd(struct cmd *cmd)
     }
     close(p[0]);
     close(p[1]);
-    wait();
-    wait();
+    wait(p[0]);
+    wait(p[1]);
     break;
 
   case BACK:
