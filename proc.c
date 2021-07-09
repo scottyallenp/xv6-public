@@ -315,18 +315,52 @@ wait(int *status) // Lab 1 changes
     sleep(curproc, &ptable.lock);  //DOC: wait-sleep
   }
 }
-/*
+
 int
 waitpid(int pid, int *status, int options) // lab 1 changes
 {
+  struct proc *p;
+  int checkpid; // lab 1 changes
+  struct proc *curproc = myproc();
+  
+  acquire(&ptable.lock);
+  for(;;){
+    // Scan through table looking for exited children.
+    checkpid = 0; // lab 1 changes
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if(p->pid != pid) // lab 1 changes
+        continue;
+      checkpid = 1; // lab 1 changes
+      if(p->state == ZOMBIE){
+        // Found one.
+        if (status) {   // lab 1 changes
+          *status = p->status; // lab 1 changes
+        } // lab 1 changes
+        pid = p->pid;
+        kfree(p->kstack);
+        p->kstack = 0;
+        freevm(p->pgdir);
+        p->pid = 0;
+        p->parent = 0;
+        p->name[0] = 0;
+        p->killed = 0;
+        p->state = UNUSED;
+        release(&ptable.lock);
+        return pid;
+      }
+    }
 
-  if(pid == -1){
+    // No point waiting if we don't have any children.
+    if(!checkpid || curproc->killed){
+      release(&ptable.lock);
+      return -1;
+    }
 
-    
+    // Wait for children to exit.  (See wakeup1 call in proc_exit.)
+    sleep(curproc, &ptable.lock);  //DOC: wait-sleep
   }
-
 }
-*/
+
 //PAGEBREAK: 42
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
