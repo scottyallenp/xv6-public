@@ -66,7 +66,7 @@ exitiputtest(void)
     }
     exit(0); // lab 1 changes
   }
-  wait();
+  wait(pid); // lab 1 changes wait
   printf(stdout, "exitiput test ok\n");
 }
 
@@ -109,7 +109,7 @@ openiputtest(void)
     printf(stdout, "unlink failed\n");
     exit(1); // lab 1 changes
   }
-  wait();
+  wait(pid); // lab 1 changes wait
   printf(stdout, "openiput test ok\n");
 }
 
@@ -346,7 +346,7 @@ pipe1(void)
       exit(1); // lab 1 changes
     }
     close(fds[0]);
-    wait();
+    wait(pid); // lab 1 changes wait
   } else {
     printf(1, "fork() failed\n");
     exit(1); // lab 1 changes
@@ -394,9 +394,9 @@ preempt(void)
   kill(pid2);
   kill(pid3);
   printf(1, "wait... ");
-  wait();
-  wait();
-  wait();
+  wait(pid1); // lab 1 changes wait
+  wait(pid2); // lab 1 changes wait
+  wait(pid3); // lab 1 changes wait
   printf(1, "preempt ok\n");
 }
 
@@ -486,7 +486,7 @@ sharedfd(void)
   if(pid == 0)
     exit(0); // lab 1 changes is this correct
   else
-    wait();
+    wait(pid); // lab 1 changes wait
   close(fd);
   fd = open("sharedfd", 0);
   if(fd < 0){
@@ -552,7 +552,7 @@ fourfiles(void)
   }
 
   for(pi = 0; pi < 4; pi++){
-    wait();
+    wait(pid); // lab 1 changes wait is this correct
   }
 
   for(i = 0; i < 2; i++){
@@ -794,7 +794,7 @@ concreate(void)
     if(pid == 0)
       exit(0); // lab 1 changes is this correct
     else
-      wait();
+      wait(pid); // lab 1 changes wait
   }
 
   memset(fa, 0, sizeof(fa));
@@ -846,7 +846,7 @@ concreate(void)
     if(pid == 0)
       exit(0); // lab 1 changes is this correct
     else
-      wait();
+      wait(pid); // lab 1 changes wait
   }
 
   printf(1, "concreate ok\n");
@@ -881,7 +881,7 @@ linkunlink()
   }
 
   if(pid)
-    wait();
+    wait(pid); // lab 1 changes wait
   else
     exit(1); // lab 1 changes
 
@@ -1446,7 +1446,7 @@ sbrktest(void)
   }
   if(pid == 0)
     exit(0); // lab 1 changes is this correct
-  wait();
+  wait(pid); // lab 1 changes wait
 
   // can one grow address space to something big?
 #define BIG (100*1024*1024)
@@ -1506,7 +1506,7 @@ sbrktest(void)
       kill(ppid);
       exit(1); // lab 1 changes
     }
-    wait();
+    wait(pid); // lab 1 changes wait
   }
 
   // if we run the system out of memory, does it clean up the last
@@ -1632,7 +1632,7 @@ bigargtest(void)
     printf(stdout, "bigargtest: fork failed\n");
     exit(1); // lab 1 changes
   }
-  wait();
+  wait(pid); // lab 1 changes wait
   fd = open("bigarg-ok", 0);
   if(fd < 0){
     printf(stdout, "bigarg test failed!\n");
@@ -1720,7 +1720,7 @@ uio()
     printf (1, "fork failed\n");
     exit(1); // lab 1 changes
   }
-  wait();
+  wait(pid); // lab 1 changes wait
   printf(1, "uio test done\n");
 }
 

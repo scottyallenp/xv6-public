@@ -317,6 +317,11 @@ int
 waitpid(int pid, int *status, int options) // lab 1 changes
 {
 
+  if(pid == -1){
+
+    
+  }
+
 }
 */
 //PAGEBREAK: 42
