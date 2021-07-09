@@ -117,8 +117,8 @@ runcmd(struct cmd *cmd)
     }
     close(p[0]);
     close(p[1]);
-    wait(p[0]);
-    wait(p[1]);
+    wait(p[0]); // lab 1 changes wait
+    wait(p[1]); // lab 1 changes wait
     break;
 
   case BACK:
@@ -166,7 +166,7 @@ main(void)
     }
     if(fork1() == 0)
       runcmd(parsecmd(buf));
-    wait();
+    wait(fd); // lab 1 changes wait
   }
   exit(0); // Lab 1 Changes
 }

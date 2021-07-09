@@ -413,7 +413,7 @@ exitwait(void)
       return;
     }
     if(pid){
-      if(wait() != pid){
+      if(wait(pid) != pid){ // lab 1 changes wait
         printf(1, "wait wrong pid\n");
         return;
       }
@@ -453,7 +453,7 @@ mem(void)
     printf(1, "mem ok\n");
     exit(0); // lab 1 changes
   } else {
-    wait();
+    wait(pid); // lab 1 changes wait
   }
 }
 
@@ -620,7 +620,7 @@ createdelete(void)
   }
 
   for(pi = 0; pi < 4; pi++){
-    wait();
+    wait(pid); // lab 1 changes wait
   }
 
   name[0] = name[1] = name[2] = 0;
@@ -1397,13 +1397,13 @@ forktest(void)
   }
 
   for(; n > 0; n--){
-    if(wait() < 0){
+    if(wait(pid) < 0){ // lab 1 changes wait
       printf(1, "wait stopped early\n");
       exit(1); // lab 1 changes
     }
   }
 
-  if(wait() != -1){
+  if(wait(pid) != -1){ // lab 1 changes wait
     printf(1, "wait got too many\n");
     exit(1);  // lab 1 changes
   }
@@ -1533,7 +1533,7 @@ sbrktest(void)
     if(pids[i] == -1)
       continue;
     kill(pids[i]);
-    wait();
+    wait(pid); // lab 1 changes wait
   }
   if(c == (char*)0xffffffff){
     printf(stdout, "failed sbrk leaked memory\n");
@@ -1577,7 +1577,7 @@ validatetest(void)
     sleep(0);
     sleep(0);
     kill(pid);
-    wait();
+    wait(pid); // lab 1 changes wait
 
     // try to crash the kernel by passing in a bad string pointer
     if(link("nosuchfile", (char*)p) != -1){
