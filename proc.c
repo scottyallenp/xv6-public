@@ -261,6 +261,7 @@ exit(int status)
         wakeup1(initproc);
     }
   }
+  curproc->status = status;
 
   // Jump into the scheduler, never to return.
   curproc->state = ZOMBIE;
@@ -291,6 +292,7 @@ wait(int *status) // Lab 1 changes
         if (status) {   // lab 1 changes
           *status = p->status; // lab 1 changes
         } // lab 1 changes
+        p->status = 0;
         pid = p->pid;
         kfree(p->kstack);
         p->kstack = 0;
@@ -336,6 +338,7 @@ waitpid(int pid, int *status, int options) // lab 1 changes
         if (status) {   // lab 1 changes
           *status = p->status; // lab 1 changes
         } // lab 1 changes
+        p->status = 0;
         pid = p->pid;
         kfree(p->kstack);
         p->kstack = 0;
