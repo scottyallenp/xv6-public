@@ -14,23 +14,27 @@ sys_fork(void)
 }
 
 int
-sys_exit(void)
+sys_exit(void) 
 {
-  int status; 
-  exit(status);
+  int status; // lab 1 changes
+  exit(status); // lab 1 changes
   return 0;  // not reached
 }
 
 int
-sys_wait(int *status) // lab 1 changes
+sys_wait(void) 
 {
-  return wait(&status);
+  int *status; // lab 1 changes
+  return wait(&status); // lab 1 changes
 }
 
 int
-sys_waitpid(int pid, int *status, int options) // lab 1 changes
+sys_waitpid(void) // lab 1 changes
 {
-  return waitpid(pid, &status, options);
+  int pid; // lab 1 changes
+  int *status; // lab 1 changes
+  int options; // lab 1 changes
+  return waitpid(pid, &status, options); // lab 1 changes
 }
 
 int
