@@ -17,6 +17,8 @@ int
 sys_exit(void) 
 {
   int status; // lab 1 changes
+  if(argint(0, &status) < 0) // lab 1 changes
+    return -1; // lab 1 changes
   exit(status); // lab 1 changes
   return 0;  // not reached
 }
@@ -25,6 +27,8 @@ int
 sys_wait(void) 
 {
   int *status; // lab 1 changes
+  if (argptr(0, (char**) &status, sizeof(status)) < 0) // lab 1 changes
+    return -1;
   return wait(&status); // lab 1 changes
 }
 
@@ -33,7 +37,11 @@ sys_waitpid(void) // lab 1 changes
 {
   int pid; // lab 1 changes
   int *status; // lab 1 changes
-  int options; // lab 1 changes
+  int options = 0; // lab 1 changes
+  if (argptr(0, (char**) &status, sizeof(status)) < 0) // lab 1 changes
+    return -1;
+  if(argint(0, &pid) < 0)
+    return -1;
   return waitpid(pid, &status, options); // lab 1 changes
 }
 
