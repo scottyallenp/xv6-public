@@ -29,7 +29,7 @@ sys_wait(void)
   int *status; // lab 1 changes
   if (argptr(0, (char**) &status, sizeof(status)) < 0) // lab 1 changes
     return -1;
-  return wait(&status); // lab 1 changes
+  return wait(status); // lab 1 changes
 }
 
 int
@@ -44,7 +44,7 @@ sys_waitpid(void) // lab 1 changes
     return -1;
   if(argint(0, &options) < 0)
     return -1;
-  return waitpid(pid, &status, options); // lab 1 changes
+  return waitpid(pid, status, options); // lab 1 changes
 }
 
 int
