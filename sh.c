@@ -93,7 +93,7 @@ runcmd(struct cmd *cmd)
     lcmd = (struct listcmd*)cmd;
     if(fork1() == 0)
       runcmd(lcmd->left);
-    wait(0); // lab 1 changes wait is this correct
+    wait(0); // lab 1 wait is this correct
     runcmd(lcmd->right);
     break;
 
@@ -117,8 +117,8 @@ runcmd(struct cmd *cmd)
     }
     close(p[0]);
     close(p[1]);
-    wait(0); // lab 1 changes wait
-    wait(0); // lab 1 changes wait
+    wait(0); // lab 1 wait
+    wait(0); // lab 1 wait
     break;
 
   case BACK:
@@ -166,7 +166,7 @@ main(void)
     }
     if(fork1() == 0)
       runcmd(parsecmd(buf));
-    wait(0); // lab 1 changes wait
+    wait(0); // lab 1 wait
   }
   exit(0); // Lab 1 Changes
 }
