@@ -7,7 +7,7 @@ main(int argc, char *argv[])
 {
   if(argc != 3){
     printf(2, "Usage: ln old new\n");
-    exit(1); // Lab 1 Changes
+    exit(0); // Lab 1 Changes
   }
   if(link(argv[1], argv[2]) < 0)
     printf(2, "link %s %s: failed\n", argv[1], argv[2]);

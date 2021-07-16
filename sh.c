@@ -84,7 +84,7 @@ runcmd(struct cmd *cmd)
     close(rcmd->fd);
     if(open(rcmd->file, rcmd->mode) < 0){
       printf(2, "open %s failed\n", rcmd->file);
-      exit(1); // Lab 1 Changes
+      exit(0); // Lab 1 Changes
     }
     runcmd(rcmd->cmd);
     break;
@@ -175,7 +175,7 @@ void
 panic(char *s)
 {
   printf(2, "%s\n", s);
-  exit(1); // Lab 1 Changes
+  exit(0); // Lab 1 Changes
 }
 
 int
