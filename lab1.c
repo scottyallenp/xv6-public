@@ -18,7 +18,7 @@ void exitTest() {
 
     if (pid == 0) {
         printf(1, "This is the child with pid %d\n", pid);
-        printf(1, "This child exits with status 1");
+        printf(1, "This child exits with status 1\n");
         exit(1);
     }
     else {
