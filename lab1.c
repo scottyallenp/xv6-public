@@ -23,7 +23,7 @@ void exitTest() {
     }
     else {
         childpid = wait(&exitvar);
-        printf(1, "This is the parent\n");
+        printf(1, "This is the parent, ");
         printf(1, "its child with pid: %d exits with status %d\n", childpid, exitvar);
     }
 
@@ -33,6 +33,24 @@ void exitTest() {
 }
 
 void waitTest() {
+
+    printf(1, "Testing wait\n");
+
+    int pid = fork(); 
+    int exitvar;
+    int childpid;
+
+    if (pid == 0) {
+        
+    }
+    else {
+        childpid = wait(&exitvar);
+        
+    }
+
+    exit(0);
+    printf(1, "This will not execute!\n");
+
 
 }
 
