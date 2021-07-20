@@ -27,7 +27,7 @@ wc(int fd, char *name)
   }
   if(n < 0){
     printf(1, "wc: read error\n");
-    exit(); // Lab 1 Changes
+    exit(0); // Lab 1 Changes
   }
   printf(1, "%d %d %d %s\n", l, w, c, name);
 }
@@ -39,16 +39,16 @@ main(int argc, char *argv[])
 
   if(argc <= 1){
     wc(0, "");
-    exit(); // Lab 1 Changes
+    exit(0); // Lab 1 Changes
   }
 
   for(i = 1; i < argc; i++){
     if((fd = open(argv[i], 0)) < 0){
       printf(1, "wc: cannot open %s\n", argv[i]);
-      exit(); // Lab 1 Changes
+      exit(0); // Lab 1 Changes
     }
     wc(fd, argv[i]);
     close(fd);
   }
-  exit(); // Lab 1 Changes
+  exit(0); // Lab 1 Changes
 }

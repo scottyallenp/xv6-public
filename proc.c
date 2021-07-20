@@ -221,6 +221,9 @@ fork(void)
   return pid;
 }
 
+// Exit the current process.  Does not return.
+// An exited process remains in the zombie state
+// until its parent calls wait() to find out it exited.
 void
 exit(void)
 {
@@ -264,9 +267,6 @@ exit(void)
   panic("zombie exit");
 }
 
-// Exit the current process.  Does not return.
-// An exited process remains in the zombie state
-// until its parent calls wait() to find out it exited.
 // Lab 1, Added void exit(int status) function
 void
 exitStatus(int status)
@@ -333,10 +333,10 @@ wait(int *status) // Lab 1 changes
       havekids = 1;
       if(p->state == ZOMBIE){
         // Found one.
-        if (status) {   
-          *status = p->status; 
+        if (status) {    // lab 1 changes
+          *status = p->status;  // lab 1 changes
         } 
-        p->status = 0;
+        p->status = 0; // lab 1 changes
         pid = p->pid;
         kfree(p->kstack);
         p->kstack = 0;

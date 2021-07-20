@@ -78,7 +78,7 @@ main(int argc, char *argv[])
 
   if(argc < 2){
     fprintf(stderr, "Usage: mkfs fs.img files...\n");
-    exit();
+    exit(0);
   }
 
   assert((BSIZE % sizeof(struct dinode)) == 0);
@@ -87,7 +87,7 @@ main(int argc, char *argv[])
   fsfd = open(argv[1], O_RDWR|O_CREAT|O_TRUNC, 0666);
   if(fsfd < 0){
     perror(argv[1]);
-    exit();
+    exit(0);
   }
 
   // 1 fs block = 1 disk sector
@@ -132,7 +132,7 @@ main(int argc, char *argv[])
 
     if((fd = open(argv[i], 0)) < 0){
       perror(argv[i]);
-      exit();
+      exit(0);
     }
 
     // Skip leading _ in name when writing to file system.
@@ -164,7 +164,7 @@ main(int argc, char *argv[])
 
   balloc(freeblock);
 
-  exit();
+  exit(0);
 }
 
 void
@@ -172,11 +172,11 @@ wsect(uint sec, void *buf)
 {
   if(lseek(fsfd, sec * BSIZE, 0) != sec * BSIZE){
     perror("lseek");
-    exit();
+    exit(0);
   }
   if(write(fsfd, buf, BSIZE) != BSIZE){
     perror("write");
-    exit();
+    exit(0);
   }
 }
 
@@ -212,11 +212,11 @@ rsect(uint sec, void *buf)
 {
   if(lseek(fsfd, sec * BSIZE, 0) != sec * BSIZE){
     perror("lseek");
-    exit();
+    exit(0);
   }
   if(read(fsfd, buf, BSIZE) != BSIZE){
     perror("read");
-    exit();
+    exit(0);
   }
 }
 

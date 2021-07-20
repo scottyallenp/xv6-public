@@ -77,9 +77,9 @@ main(int argc, char *argv[])
 
   if(argc < 2){
     ls(".");
-    exit(); // Lab 1 Changes
+    exit(0); // Lab 1 Changes
   }
   for(i=1; i<argc; i++)
     ls(argv[i]);
-  exit(); // Lab 1 Changes
+  exit(0); // Lab 1 Changes
 }

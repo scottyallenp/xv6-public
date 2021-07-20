@@ -13,38 +13,45 @@ sys_fork(void)
   return fork();
 }
 
-int
-sys_exit(void) 
+int 
+sys_exit(void)
 {
-  int status; 
-  if(argint(0, &status) < 0) 
-    return -1; 
-  exit(status); 
+  exit(0);
+  return 0;
+}
+
+int
+sys_exitstatus(void) // Lab 1 changes
+{
+  int status; // Lab 1 changes
+  if(argint(0, &status) < 0) // Lab 1 changes
+    return -1; // Lab 1 changes
+  exitStatus(status); // Lab 1 changes
   return 0;  // not reached
 }
 
 int
 sys_wait(void) 
 {
-  int *status; 
-  if (argptr(0, (char**) &status, sizeof(status)) < 0) 
-    return -1;
-  return wait(status); 
+  int *status; // Lab 1 changes
+  if (argptr(0, (char**) &status, sizeof(status)) < 0) // Lab 1 changes
+    return -1; // Lab 1 changes
+  return wait(status); // Lab 1 changes
 }
 
 int
-sys_waitpid(void) 
+sys_waitpid(void) // Lab 1 changes
 {
-  int pid; 
-  int *status; 
-  int options; 
-  if (argptr(0, (char**) &status, sizeof(status)) < 0) 
-    return -1;
-  if(argint(0, &pid) < 0)
-    return -1;
-  if(argint(0, &options) < 0)
-    return -1;
-  return waitpid(pid, status, options); 
+  int pid; // Lab 1 changes
+  int *status; // Lab 1 changes
+  int options; // Lab 1 changes
+  if (argptr(0, (char**) &status, sizeof(status)) < 0) // Lab 1 changes
+    return -1; // Lab 1 changes
+  if(argint(0, &pid) < 0) // Lab 1 changes
+    return -1; // Lab 1 changes
+  if(argint(0, &options) < 0) // Lab 1 changes
+    return -1; // Lab 1 changes
+  return waitpid(pid, status, options); // Lab 1 changes
 }
 
 int

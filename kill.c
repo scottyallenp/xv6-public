@@ -9,9 +9,9 @@ main(int argc, char **argv)
 
   if(argc < 2){
     printf(2, "usage: kill pid...\n");
-    exit(); // Lab 1 Changes
+    exit(0); // Lab 1 Changes
   }
   for(i=1; i<argc; i++)
     kill(atoi(argv[i]));
-  exit(); // Lab 1 Changes
+  exit(0); // Lab 1 Changes
 }
