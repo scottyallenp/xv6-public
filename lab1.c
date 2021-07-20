@@ -36,16 +36,23 @@ void waitTest() {
 
     printf(1, "Testing wait\n");
 
-    int pid = fork(); 
+    int pid = fork();
     int exitvar;
-    int childpid;
+    int parentpid;
 
     if (pid == 0) {
-        
+        printf(1, "This is the child with pid %d\n", pid);
+        printf(1, "It will always print the first 3 numbers 1-3: ");
+        printf(1, "1, 2, 3\n");
+        printf(1, "The child with pid: %d exits with status %d\n", pid, exitvar);
     }
     else {
-        childpid = wait(&exitvar);
-        
+        parentpid = wait(&exitvar);
+        printf(1, "This is the parent with pid %d\n", pid);
+        printf(1, "It will always print the second 3 numbers 4-6: ");
+        printf(1, "4, 5, 6\n");
+        printf(1, "The parent with pid: %d exits with status %d\n", parentpid, exitvar);
+
     }
 
     exit(0);
@@ -64,11 +71,11 @@ int main(int argc, char* argv[]) {
         exitTest();
     }
 
-    else if (atoi(argv[2]) == 2) {
+    else if (atoi(argv[1]) == 2) {
         waitTest();
     }
 
-    else if (atoi(argv[3]) == 3) {
+    else if (atoi(argv[1]) == 3) {
         waitpidTest();
     }
 
