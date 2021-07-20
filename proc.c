@@ -289,9 +289,9 @@ wait(int *status) // Lab 1 changes
       havekids = 1;
       if(p->state == ZOMBIE){
         // Found one.
-        if (status) {   // lab 1
-          *status = p->status; // lab 1
-        } // lab 1
+        if (status) {   
+          *status = p->status; 
+        } 
         p->status = 0;
         pid = p->pid;
         kfree(p->kstack);
@@ -319,25 +319,25 @@ wait(int *status) // Lab 1 changes
 }
 
 int
-waitpid(int pid, int *status, int options) // lab 1
+waitpid(int pid, int *status, int options) 
 {
   struct proc *p;
-  int checkpid; // lab 1
+  int checkpid; 
   struct proc *curproc = myproc();
   
   acquire(&ptable.lock);
   for(;;){
     // Scan through table looking for exited children.
-    checkpid = 0; // lab 1
+    checkpid = 0; 
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->pid != pid) // lab 1
+      if(p->pid != pid) 
         continue;
-      checkpid = 1; // lab 1
+      checkpid = 1; 
       if(p->state == ZOMBIE){
         // Found one.
-        if (status) {   // lab 1
-          *status = p->status; // lab 1
-        } // lab 1
+        if (status) {   
+          *status = p->status; 
+        } 
         p->status = 0;
         pid = p->pid;
         kfree(p->kstack);
