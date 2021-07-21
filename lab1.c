@@ -51,7 +51,7 @@ void waitTest() {
         printf(1, "This is the parent with pid %d\n", pid);
         printf(1, "It will always print the second 3 numbers 4-6: ");
         printf(1, "4, 5, 6\n");
-        printf(1, "The parent with pid: %d exits with status %d\n", parentpid, exitvar);
+        printf(1, "The parent with the child pid of : %d exits with status %d\n", parentpid, exitvar);
 
     }
 
@@ -65,26 +65,35 @@ void waitpidTest() {
 
     printf(1, "Testing waitpid\n");
 
-    int pid = fork();
+    int pidarr[4] = {0, 0, 0, 0};
     int exitvar;
-    int parentpid;
+    int pid;
+    int i = 0;
 
-    if (pid == 0) {
-        printf(1, "This is the child with pid %d\n", pid);
-        printf(1, "It will always print the first 3 letters a-c: ");
-        printf(1, "a, b, c\n");
-        printf(1, "The child with pid: %d exits with status %d\n", pid, exitvar);
-        exitStatus(0);
+    for(i = 0; i < 4; i++) {
+        pidarr[i] = fork();
+        if (pidarr[i] == 0) { // only the child executed this code
+            printf(1, "\nThis is the child with PID# %d and it exits with status %d\n", getpid(), i);
+            exitStatus(i);
+        }
     }
-    else {
-        parentpid = waitpid(pid, &exitvar, 0);
-        printf(1, "This is the parent: It's child with pid %d\n", pid);
-        printf(1, "It will always print the last 3 letters x-z: ");
-        printf(1, "x, y, z\n");
-        printf(1, "It's child with pid: %d exits with status %d\n", parentpid, exitvar);
-        exitStatus(0);
 
-    }
+    sleep(4);  
+    printf(1, "\nThis is the parent\n Waiting for child with PID# %d\n",pidarr[2]);
+    pid = waitpid(pidarr[2], &exitvar, 0);
+    printf(1, "Child# %d has exited with status %d\n",pid, exitvar);
+    sleep(4); 
+    printf(1, "\n This is the parent\n Waiting for child with PID# %d\n",pidarr[0]);
+    pid = waitpid(pidarr[0], &exitvar, 0);
+    printf(1, "Child# %d has exited with status %d\n",pid, exitvar);
+    sleep(4);  
+    printf(1, "\n This is the parent\n Waiting for child with PID# %d\n",pidarr[3]);
+    pid = waitpid(pidarr[3], &exitvar, 0);
+    printf(1, "Child# %d has exited with status %d\n",pid, exitvar);
+    sleep(4);  
+    printf(1, "\n This is the parent\n Waiting for child with PID# %d\n",pidarr[1]);
+    pid = waitpid(pidarr[1], &exitvar, 0);
+    printf(1, "Child# %d has exited with status %d\n",pid, exitvar);
 
     exitStatus(0);
     printf(1, "This will not execute!\n");

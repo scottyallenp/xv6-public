@@ -3,9 +3,9 @@ struct rtcdate;
 
 // system calls
 int fork(void);
-int exit(void) __attribute__((noreturn)); // Lab 1 Changes
+int exit(void) __attribute__((noreturn));
 int exitStatus(int status); // Lab 1 Changes
-int wait(int *status); 
+int wait(int *status);  // Lab 1 Changes
 int waitpid(int pid, int *status, int options); // Lab 1 Changes
 int pipe(int*);
 int write(int, const void*, int);

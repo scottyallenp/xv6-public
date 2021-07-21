@@ -305,8 +305,8 @@ exitStatus(int status)
         wakeup1(initproc);
     }
   }
-  curproc->status = status;
 
+  curproc->status = status; 
   // Jump into the scheduler, never to return.
   curproc->state = ZOMBIE;
   sched();
