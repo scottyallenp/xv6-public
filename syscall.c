@@ -104,7 +104,7 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_waitpid(void); // Lab 1 Changes
-extern int sys_exitstatus(void); // Lab 1 Changes
+extern int sys_exitStatus(void); // Lab 1 Changes
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -129,7 +129,7 @@ static int (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_waitpid]  sys_waitpid, // Lab 1 changes
-[SYS_exitstatus] sys_exitstatus, // Lab 1 changes
+[SYS_exitStatus] sys_exitStatus, // Lab 1 changes
 };
 
 void

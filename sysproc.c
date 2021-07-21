@@ -21,7 +21,7 @@ sys_exit(void)
 }
 
 int
-sys_exitstatus(void) // Lab 1 changes
+sys_exitStatus(void) // Lab 1 changes
 {
   int status; // Lab 1 changes
   if(argint(0, &status) < 0) // Lab 1 changes

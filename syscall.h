@@ -21,4 +21,4 @@
 #define SYS_mkdir  20
 #define SYS_close  21
 #define SYS_waitpid 22 // Lab 1 Changes
-#define SYS_exitstatus 23 // Lab1 Changes
+#define SYS_exitStatus 23 // Lab1 Changes
