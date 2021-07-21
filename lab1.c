@@ -51,7 +51,7 @@ void waitTest() {
         printf(1, "This is the parent with pid %d\n", pid);
         printf(1, "It will always print the second 3 numbers 4-6: ");
         printf(1, "4, 5, 6\n");
-        printf(1, "The parent with the child pid of : %d exits with status %d\n", parentpid, exitvar);
+        printf(1, "The parent with the child pid of %d exits with status %d\n", parentpid, exitvar);
 
     }
 

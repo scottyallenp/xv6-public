@@ -45,11 +45,11 @@ sys_waitpid(void) // Lab 1 changes
   int pid; // Lab 1 changes
   int *status; // Lab 1 changes
   int options; // Lab 1 changes
-  if (argptr(0, (char**) &status, sizeof(status)) < 0) // Lab 1 changes
+  if (argptr(1, (char**) &status, sizeof(status)) < 0) // Lab 1 changes
     return -1; // Lab 1 changes
   if(argint(0, &pid) < 0) // Lab 1 changes
     return -1; // Lab 1 changes
-  if(argint(0, &options) < 0) // Lab 1 changes
+  if(argint(2, &options) < 0) // Lab 1 changes
     return -1; // Lab 1 changes
   return waitpid(pid, status, options); // Lab 1 changes
 }
