@@ -414,7 +414,7 @@ waitpid(int pid, int *status, int options)
   }
 }
 
-/*
+
 void 
 changePriority(int change) 
 {
@@ -422,7 +422,7 @@ changePriority(int change)
   struct proc *curproc = myproc();
   
 }
-*/
+
 
 
 /*
