@@ -53,7 +53,7 @@ sys_waitpid(void) // Lab 1 changes
     return -1; // Lab 1 changes
   return waitpid(pid, status, options); // Lab 1 changes
 }
-/*
+
 int 
 sys_changePriority(void) 
 {
@@ -65,7 +65,7 @@ sys_changePriority(void)
 
 }
 
-*/
+
 
 
 /*
