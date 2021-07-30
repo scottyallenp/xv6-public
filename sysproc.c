@@ -53,7 +53,31 @@ sys_waitpid(void) // Lab 1 changes
     return -1; // Lab 1 changes
   return waitpid(pid, status, options); // Lab 1 changes
 }
+/*
+int 
+sys_changePriority(void) 
+{
+ int change; 
+  if(argint(0, &change) < 0)
+    return -1; 
+ exitStatus(change); 
+ return 0;  // not reached
 
+}
+
+*/
+
+
+/*
+int
+sys_debug(void)
+{
+
+  
+
+  return debug();
+}
+*/
 int
 sys_kill(void)
 {

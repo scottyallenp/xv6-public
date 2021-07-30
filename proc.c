@@ -6,6 +6,12 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
+#include "stat.h"
+//#include "user.h"
+#include "fs.h"
+#include "fcntl.h"
+#include "syscall.h"
+#include "traps.h"
 
 struct {
   struct spinlock lock;
@@ -407,6 +413,26 @@ waitpid(int pid, int *status, int options)
     sleep(curproc, &ptable.lock);  //DOC: wait-sleep
   }
 }
+
+/*
+void 
+changePriority(int change) 
+{
+
+  struct proc *curproc = myproc();
+  
+}
+*/
+
+
+/*
+void
+debug(void) 
+{
+  struct proc *p = myproc();
+  printf(1, "proc pid: %d" ,p->pid);
+}
+*/
 
 //PAGEBREAK: 42
 // Per-CPU process scheduler.

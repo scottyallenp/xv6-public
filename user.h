@@ -25,6 +25,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int debug(void); // lab 1 changes
+// int changePriority(int); // lab 2 changes
 
 // ulib.c
 int stat(const char*, struct stat*);
