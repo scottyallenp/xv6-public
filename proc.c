@@ -426,6 +426,7 @@ waitpid(int pid, int *status, int options)
 void
 scheduler(void)
 {
+  int lowP; // Lab 2 Changes
   struct proc *p;
   struct cpu *c = mycpu();
   c->proc = 0;
@@ -435,7 +436,14 @@ scheduler(void)
     sti();
 
     // Loop over process table looking for process to run.
+    lowP = 100; // Lab 2 Changes
     acquire(&ptable.lock);
+    for (p - ptable.proc; p < &ptable.proc[NPROC]; p++) { // Lab 2 Changes
+      if (p->priority < lowP && p->state == RUNNABLE) { // Lab 2 Changes
+        lowP - p->priority; // Lab 2 Changes
+      }
+    }
+
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
@@ -443,6 +451,12 @@ scheduler(void)
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
+      if (p->priority != lowP) { // Lab 2 Changes
+        if (p->priority > 0) { // Lab 2 Changes
+          p->priority--; // Lab 2 Changes
+        }
+        continue; // Lab 2 Changes
+      }
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
