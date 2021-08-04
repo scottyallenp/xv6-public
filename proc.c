@@ -473,6 +473,26 @@ scheduler(void)
   }
 }
 
+void 
+setPriority(int change)
+{
+
+  struct proc *p = myproc();
+  p->priority = change;
+  return 0;
+
+}
+
+int
+getPriority()
+{
+
+  struct proc *p = myproc();
+  return p->priority;
+
+}
+
+
 // Enter scheduler.  Must hold only ptable.lock
 // and have changed proc->state. Saves and restores
 // intena because intena is a property of this
