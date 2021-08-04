@@ -32,3 +32,4 @@ SYSCALL(sleep)
 SYSCALL(uptime)
 SYSCALL(exitStatus)
 SYSCALL(debug)
+

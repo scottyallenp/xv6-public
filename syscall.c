@@ -131,7 +131,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_waitpid]  sys_waitpid, // Lab 1 changes
 [SYS_exitStatus] sys_exitStatus, // Lab 1 changes
-//[SYS_changePriority] sys_changePriority,
+[SYS_changePriority] sys_changePriority,
 };
 
 void
