@@ -9,14 +9,17 @@
 #include "memlayout.h"
 
 
+void agingPriorityTest() {
 
+    
+
+}
 
 
 int main(int argc, char* argv[]) {
 
     if (atoi(argv[1]) == 1) {
-   
-
+        agingPriorityTest();
     }
 
     return 0;
