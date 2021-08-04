@@ -26,7 +26,8 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int debug(void);
-int changePriority(int change); 
+int setPriority(int change); 
+int getPriority();
 // lab 2 changes
 
 // ulib.c

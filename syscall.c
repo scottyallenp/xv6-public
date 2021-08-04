@@ -105,7 +105,8 @@ extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_waitpid(void); // Lab 1 Changes
 extern int sys_exitStatus(void); // Lab 1 Changes
-//extern int sys_changePriority(void);
+extern int sys_setPriority(void);
+extern int sys_getPriority(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -131,7 +132,8 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_waitpid]  sys_waitpid, // Lab 1 changes
 [SYS_exitStatus] sys_exitStatus, // Lab 1 changes
-[SYS_changePriority] sys_changePriority,
+[SYS_setPriority] sys_setPriority, // lab 2 changes
+[SYS_getPriority] sys_getPriority, // lab 2 changes
 };
 
 void

@@ -55,7 +55,7 @@ sys_waitpid(void) // Lab 1 changes
 }
 
 int 
-sys_changePriority(void) 
+sys_setPriority(void) 
 {
  int change; 
   if(argint(0, &change) < 0)
@@ -65,16 +65,12 @@ sys_changePriority(void)
 
 }
 
-/*
 int
-sys_debug(void)
+sys_getPriority(void)
 {
-
-  
-
-  return debug();
+return getPriority();
 }
-*/
+
 int
 sys_kill(void)
 {

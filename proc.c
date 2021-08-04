@@ -438,9 +438,9 @@ scheduler(void)
     // Loop over process table looking for process to run.
     lowP = 100; // Lab 2 Changes
     acquire(&ptable.lock);
-    for (p - ptable.proc; p < &ptable.proc[NPROC]; p++) { // Lab 2 Changes
+    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) { // Lab 2 Changes
       if (p->priority < lowP && p->state == RUNNABLE) { // Lab 2 Changes
-        lowP - p->priority; // Lab 2 Changes
+        lowP = p->priority; // Lab 2 Changes
       }
     }
 

@@ -23,4 +23,5 @@
 #define SYS_waitpid 22 // Lab 1 Changes
 #define SYS_exitStatus 23 // Lab1 Changes
 #define SYS_debug 24 // lab 1 changes
-#define SYS_changePriority 25 // lab 2 changes
+#define SYS_setPriority 25 // lab 2 changes
+#define SYS_getPriority 26 // lab 2 changes

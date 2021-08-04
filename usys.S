@@ -32,4 +32,6 @@ SYSCALL(sleep)
 SYSCALL(uptime)
 SYSCALL(exitStatus)
 SYSCALL(debug)
+SYSCALL(setPriority)
+SYSCALL(getPriority)
 
