@@ -117,6 +117,8 @@ found:
   memset(p->context, 0, sizeof *p->context);
   p->context->eip = (uint)forkret;
 
+  p->priority = 50;
+
   return p;
 }
 
