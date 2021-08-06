@@ -53,6 +53,11 @@ struct proc {
   int save;
   int* save2;
   int priority;                // Lab 2 Changes
+  int start;                   // Lab 2 Changes
+  int stop;                    // Lab 2 Changes
+  int turnaroundTime;          // Lab 2 Changes
+  int totalRuntime;            // Lab 2 Changes
+  int totalWaitTime;           // Lab 2 Changes
 };
 
 // Process memory is laid out contiguously, low addresses first:
