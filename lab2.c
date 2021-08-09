@@ -24,6 +24,8 @@ void agingPriorityTest() {
             setPriority(arrPriority[i]);
             printf(1, "child with pid %d has a priority of %d before doing its work.", getpid(), getPriority());
             // work for loop maybe
+            printf(1, "child with pid %d has a priority of %d while doing its work.", getpid(), getPriority());
+            // work
             printf(1, "child with pid %d has a priority of %d after doing its work.", getpid(), getPriority());
         }
 

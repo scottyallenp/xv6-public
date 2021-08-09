@@ -26,9 +26,8 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int debug(void);
-int setPriority(int change); 
-int getPriority();
-// lab 2 changes
+int setPriority(int change); // Lab 2 Changes
+int getPriority(); // Lab 2 Changes
 
 // ulib.c
 int stat(const char*, struct stat*);

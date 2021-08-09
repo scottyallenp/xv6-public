@@ -54,22 +54,22 @@ sys_waitpid(void) // Lab 1 changes
   return waitpid(pid, status, options); // Lab 1 changes
 }
 
-int 
-sys_setPriority(void) 
+int // Lab 2 changes
+sys_setPriority(void) // Lab 2 changes
 {
- int change; 
-  if(argint(0, &change) < 0)
-    return -1; 
- exitStatus(change); 
+ int change; // Lab 2 changes
+  if(argint(0, &change) < 0) // Lab 2 changes
+    return -1; // Lab 2 changes
+ exitStatus(change); // Lab 2 changes
  return 0;  // not reached
 
-}
+} // Lab 2 changes
 
-int
-sys_getPriority(void)
+int // Lab 2 changes
+sys_getPriority(void) // Lab 2 changes
 {
-return getPriority();
-}
+return getPriority(); // Lab 2 changes
+} // Lab 2 changes
 
 int
 sys_kill(void)

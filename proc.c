@@ -491,24 +491,24 @@ scheduler(void)
   }
 }
 
-void 
+void // Lab 2 Changes
 setPriority(int change)
-{
+{ 
 
   struct proc *p = myproc();
   p->priority = change;
   return 0;
 
-}
+} // Lab 2 Changes
 
-int
+int // Lab 2 Changes
 getPriority()
 {
 
   struct proc *p = myproc();
   return p->priority;
 
-}
+} // Lab 2 Changes
 
 
 // Enter scheduler.  Must hold only ptable.lock

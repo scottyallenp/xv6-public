@@ -122,7 +122,7 @@ int             wait(int *status); // Lab 1 changes
 int             waitpid(int pid, int *status, int changes); // Lab 1 changes
 void            wakeup(void*);
 void            yield(void);
-void            debug(void);
+void            debug(void); // Lab 1 changes
 void            setPriority(int change); // lab 2 changes
 int             getPriority(); // lab 2 changes
 
