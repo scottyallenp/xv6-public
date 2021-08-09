@@ -56,7 +56,6 @@ struct proc {
   int start;                   // Lab 2 Changes
   int stop;                    // Lab 2 Changes
   int turnaroundTime;          // Lab 2 Changes
-  int totalRuntime;            // Lab 2 Changes
   int totalWaitTime;           // Lab 2 Changes
 };
 

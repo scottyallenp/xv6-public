@@ -60,8 +60,7 @@ sys_setPriority(void) // Lab 2 changes
  int change; // Lab 2 changes
   if(argint(0, &change) < 0) // Lab 2 changes
     return -1; // Lab 2 changes
- exitStatus(change); // Lab 2 changes
- return 0;  // not reached
+  return setPriority(change); // Lab 2 changes
 
 } // Lab 2 changes
 

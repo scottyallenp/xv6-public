@@ -183,7 +183,8 @@ UPROGS=\
 	_lab2\
 	_wc\
 	_zombie\
-	_usertests\
+	#_usertests\
+	#commented out usertests to get rid of a file size error when running our lab2 test file
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

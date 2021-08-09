@@ -20,6 +20,8 @@ struct {
 
 static struct proc *initproc;
 
+int totalRuntime = 0;
+
 int nextpid = 1;
 extern void forkret(void);
 extern void trapret(void);
@@ -119,7 +121,7 @@ found:
   p->context->eip = (uint)forkret;
 
   p->priority = 50;
-  p->start = clock();
+  p->start = ticks;
   return p;
 }
 
@@ -254,12 +256,12 @@ exit(void)
   iput(curproc->cwd);
   end_op();
   curproc->cwd = 0;
-  p->stop = clock();
-  p->turnaroundTime = p->stop - p->start;
-  p->totalWaitTime = p-> totalRuntime - p->turnaroundTime;
-  p->totalRuntime += p->turnaroundTime;
-  printf(1, "Total turnaround time: %d", p->turnaroundTime);
-  printf(1, "Total wait time: %d", p->totalWaitTime);
+  curproc->stop = ticks;
+  curproc->turnaroundTime = curproc->stop - curproc->start;
+  totalRuntime += curproc->turnaroundTime;
+  curproc->totalWaitTime = totalRuntime - curproc->turnaroundTime;
+  cprintf("Total turnaround time: %d\n", curproc->turnaroundTime);
+  cprintf("Total wait time: %d\n", curproc->totalWaitTime);
 
 
   acquire(&ptable.lock);
@@ -306,12 +308,12 @@ exitStatus(int status)
   iput(curproc->cwd);
   end_op();
   curproc->cwd = 0;
-  p->stop = clock();
-  p->turnaroundTime = p->stop - p->start;
-  p->totalWaitTime = p->totalRuntime - p->turnaroundTime;
-  p->totalRuntime += p->turnaroundTime;
-  printf(1, "Total turnaround time: %d", p->turnaroundTime);
-  printf(1, "Total wait time: %d", p->totalWaitTime);
+  curproc->stop = ticks;
+  curproc->turnaroundTime = curproc->stop - curproc->start;
+  totalRuntime += curproc->turnaroundTime;
+  curproc->totalWaitTime = totalRuntime - curproc->turnaroundTime;
+  cprintf("Total turnaround time: %d\n", curproc->turnaroundTime);
+  cprintf("Total wait time: %d\n", curproc->totalWaitTime);
 
   acquire(&ptable.lock);
 
@@ -446,7 +448,7 @@ scheduler(void)
   struct proc *p;
   struct cpu *c = mycpu();
   c->proc = 0;
-  p->totalRuntime = 0;
+  //p->totalRuntime = 0; // Lab 2 Changes
   
   for(;;){
     // Enable interrupts on this processor.
@@ -477,7 +479,7 @@ scheduler(void)
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
-      p->priority++;
+      p->priority++; // Lab 2 Changes
 
       swtch(&(c->scheduler), p->context);
       switchkvm();
@@ -491,7 +493,7 @@ scheduler(void)
   }
 }
 
-void // Lab 2 Changes
+int // Lab 2 Changes
 setPriority(int change)
 { 
 
