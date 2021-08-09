@@ -50,8 +50,8 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
-  int save;
-  int* save2;
+  int save;                    // Lab 1 Changes
+  int* save2;                  // Lab 1 Changes
   int priority;                // Lab 2 Changes
   int start;                   // Lab 2 Changes
   int stop;                    // Lab 2 Changes
