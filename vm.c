@@ -319,6 +319,9 @@ copyuvm(pde_t *pgdir, uint sz)
   pte_t *pte;
   uint pa, i, flags;
   char *mem;
+  uint pages = KERNBASE - 1; // Lab 3 Changes
+  pages = PGROUNDDOWN(pages); // Lab 3 Changes
+  struct proc *curproc = myproc(); // Lab 3 Changes
 
   if((d = setupkvm()) == 0)
     return 0;
@@ -337,6 +340,23 @@ copyuvm(pde_t *pgdir, uint sz)
       goto bad;
     }
   }
+
+  for(i = pages; i < pages - (curproc->stackPages * PGSIZE); i -= PGSIZE){ // Lab 3 Changes
+    if((pte = walkpgdir(pgdir, (void *) i, 0)) == 0) // Lab 3 Changes
+      panic("copyuvm: pte should exist"); // Lab 3 Changes
+    if(!(*pte & PTE_P)) // Lab 3 Changes
+      panic("copyuvm: page not present"); // Lab 3 Changes
+    pa = PTE_ADDR(*pte); // Lab 3 Changes
+    flags = PTE_FLAGS(*pte); // Lab 3 Changes
+    if((mem = kalloc()) == 0) // Lab 3 Changes
+      goto bad; // Lab 3 Changes
+    memmove(mem, (char*)P2V(pa), PGSIZE); // Lab 3 Changes
+    if(mappages(d, (void*)i, PGSIZE, V2P(mem), flags) < 0) { // Lab 3 Changes
+      kfree(mem); // Lab 3 Changes
+      goto bad; // Lab 3 Changes
+    } // Lab 3 Changes
+  }
+
   return d;
 
 bad:

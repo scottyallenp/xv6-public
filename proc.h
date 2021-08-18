@@ -57,6 +57,7 @@ struct proc {
   int stop;                    // Lab 2 Changes
   int turnaroundTime;          // Lab 2 Changes
   int totalWaitTime;           // Lab 2 Changes
+  int stackPages;              // Lab 3 Changes
 };
 
 // Process memory is laid out contiguously, low addresses first:

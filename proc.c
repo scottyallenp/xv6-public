@@ -209,6 +209,7 @@ fork(void)
   np->sz = curproc->sz;
   np->parent = curproc;
   *np->tf = *curproc->tf;
+  np->stackPages = curproc->stackPages; // Lab 3 Changes
 
   // Clear %eax so that fork returns 0 in the child.
   np->tf->eax = 0;
