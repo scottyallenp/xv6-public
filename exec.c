@@ -64,11 +64,10 @@ exec(char *path, char **argv)
   // Make the first inaccessible.  Use the second as the user stack.
   sz = PGROUNDUP(sz);
   sp = KERNBASE - 1; // Lab 3 Changes
-  if(allocuvm(pgdir, sp - PGSIZE, sp) == 0) // Lab 3 Changes
+  if((allocuvm(pgdir, sp - PGSIZE, sp)) == 0) // Lab 3 Changes
     goto bad;
+    
   curproc->stackPages = 1; // Lab 3 Changes
-  //clearpteu(pgdir, (char*)(sz - 2*PGSIZE)); // Lab 3 Changes
-  //sp = sz; // Lab 3 Changes
 
   // Push argument strings, prepare rest of stack in ustack.
   for(argc = 0; argv[argc]; argc++) {

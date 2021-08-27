@@ -341,6 +341,8 @@ copyuvm(pde_t *pgdir, uint sz)
     }
   }
 
+
+  cprintf("Stack pages: %d", curproc->stackPages);
   for(i = pages; i > pages - (curproc->stackPages * PGSIZE); i -= PGSIZE){ // Lab 3 Changes
     if((pte = walkpgdir(pgdir, (void *) i, 0)) == 0) // Lab 3 Changes
       panic("copyuvm: pte should exist"); // Lab 3 Changes
