@@ -17,7 +17,6 @@
 int
 fetchint(uint addr, int *ip)
 {
-  //struct proc *curproc = myproc(); // Lab 3 Changes
 
   if(addr >= (KERNBASE - 1) || addr+4 > (KERNBASE - 1)) // Lab 3 Changes
     return -1;

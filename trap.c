@@ -81,17 +81,16 @@ trap(struct trapframe *tf)
     uint pages = rcr2();
     if (pages > KERNBASE - 1) { // Lab 3 Changes
       cprintf("Trap access is greater than the kernbase\n"); // Lab 3 Changes
-      pages = allocuvm(myproc()->pgdir, pages, pages - PGSIZE);
       exit(); // Lab 3 Changes
     }  // Lab 3 Changes
-    //uint pages = rcr2(); // Lab 3 Changes
     pages = PGROUNDDOWN(pages); // Lab 3 Changes
-    if (allocuvm(myproc()->pgdir, pages, pages - PGSIZE) == 0) { // Lab 3 Changes
+    if (allocuvm(myproc()->pgdir, pages, pages + PGSIZE) == 0) { // Lab 3 Changes
       cprintf("allocuvm failed, number of allocated pages: %d", pages); // Lab 3 Changes
       exit(); // Lab 3 Changes
     } // Lab 3 Changes
     myproc()->stackPages++; // Lab 3 Changes
-    cprintf("allocuvm succeeded, number of allocated pages: %d", pages); // Lab 3 Changes
+    cprintf("allocuvm succeeded, number of allocated pages: %d\n", pages); // Lab 3 Changes
+    cprintf("Address of new page is: 0x%p", pages);
     break; // Lab 3 Changes
 
   //PAGEBREAK: 13

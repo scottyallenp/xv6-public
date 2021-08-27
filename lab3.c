@@ -12,20 +12,19 @@ void partOne() {
 
     int pointerOne = 0;
 
-    printf(1, "Address of pointerOne: %d\n", &pointerOne);
+    printf(1, "Address of pointerOne: %p\n", &pointerOne);
 }
 
-void partTwo() {
+void partTwo(int x) {
 
-    int pointerOne = 0;
-    int pointerTwo = 0;
-    int pointerThree = 0;
+    if(x == 0) {
+        return;
+    }
+    else {
+        partTwo(x-1);
+    }
 
-    printf(1, "Address of pointerOne: %d\n", &pointerOne);
-    printf(1, "Address of pointerTwo: %d\n", &pointerTwo);
-    printf(1, "Address of pointerThree: %d\n", &pointerThree);
 }
-
 
 
 int main(int argc, char* argv[]) {
@@ -37,7 +36,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (atoi(argv[1]) == 2) {
-        partTwo();
+        partTwo(5000);
     }
 
 
