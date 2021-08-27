@@ -66,7 +66,6 @@ exec(char *path, char **argv)
   sp = KERNBASE - 1; // Lab 3 Changes
   if((allocuvm(pgdir, sp - PGSIZE, sp)) == 0) // Lab 3 Changes
     goto bad;
-    
   curproc->stackPages = 1; // Lab 3 Changes
 
   // Push argument strings, prepare rest of stack in ustack.

@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (atoi(argv[1]) == 2) {
-        partTwo(5000);
+        partTwo(300);
     }
 
 
