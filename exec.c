@@ -63,7 +63,7 @@ exec(char *path, char **argv)
   // Allocate two pages at the next page boundary.
   // Make the first inaccessible.  Use the second as the user stack.
   sz = PGROUNDUP(sz);
-  sp = KERNBASE - 1; // Lab 3 Changes
+  sp = KERNBASE - 10000; // Lab 3 Changes
   if((allocuvm(pgdir, sp - PGSIZE, sp)) == 0) // Lab 3 Changes
     goto bad;
   curproc->stackPages = 1; // Lab 3 Changes

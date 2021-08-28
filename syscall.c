@@ -18,7 +18,7 @@ int
 fetchint(uint addr, int *ip)
 {
 
-  if(addr >= (KERNBASE - 1) || addr+4 > (KERNBASE - 1)) // Lab 3 Changes
+  if(addr >= (KERNBASE - 10000) || addr+4 > (KERNBASE - 10000)) // Lab 3 Changes
     return -1;
   *ip = *(int*)(addr);
   return 0;
@@ -32,10 +32,10 @@ fetchstr(uint addr, char **pp)
 {
   char *s, *ep;
 
-  if(addr >= (KERNBASE - 1)) // Lab 3 Changes
+  if(addr >= (KERNBASE - 10000)) // Lab 3 Changes
     return -1;
   *pp = (char*)addr;
-  ep = (char*)(KERNBASE - 1); // Lab 3 Changes
+  ep = (char*)(KERNBASE - 10000); // Lab 3 Changes
   for(s = *pp; s < ep; s++){
     if(*s == 0)
       return s - *pp;
@@ -60,7 +60,7 @@ argptr(int n, char **pp, int size)
  
   if(argint(n, &i) < 0)
     return -1;
-  if(size < 0 || (uint)i >= (KERNBASE - 1) || (uint)i+size > (KERNBASE - 1)) // Lab 3 Changes
+  if(size < 0 || (uint)i >= (KERNBASE - 10000) || (uint)i+size > (KERNBASE - 10000)) // Lab 3 Changes
     return -1;
   *pp = (char*)i;
   return 0;

@@ -319,7 +319,7 @@ copyuvm(pde_t *pgdir, uint sz)
   pte_t *pte;
   uint pa, i, flags;
   char *mem;
-  uint pages = KERNBASE - 1; // Lab 3 Changes
+  uint pages = KERNBASE - 10000; // Lab 3 Changes
   pages = PGROUNDDOWN(pages); // Lab 3 Changes
   struct proc *curproc = myproc(); // Lab 3 Changes
 
@@ -342,9 +342,10 @@ copyuvm(pde_t *pgdir, uint sz)
   }
 
   uint temp = KERNBASE - 1 - (curproc->stackPages * PGSIZE);
+  temp = PGROUNDUP(temp);
 
   cprintf("Stack pages: %d\n", curproc->stackPages);
-  for(i = temp; i < (KERNBASE - 1); i += PGSIZE){ // Lab 3 Changes
+  for(i = temp; i < (KERNBASE - 10000); i += PGSIZE){ // Lab 3 Changes
     if((pte = walkpgdir(pgdir, (void *) i, 0)) == 0) // Lab 3 Changes
       panic("copyuvm: pte should exist"); // Lab 3 Changes
     if(!(*pte & PTE_P)) // Lab 3 Changes
