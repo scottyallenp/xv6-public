@@ -341,7 +341,7 @@ copyuvm(pde_t *pgdir, uint sz)
     }
   }
 
-  uint temp = KERNBASE - 1 - (curproc->stackPages * PGSIZE);
+  uint temp = KERNBASE - 1 - (curproc->stackPages * PGSIZE); // Lab 3 Changes
   temp = PGROUNDUP(temp);
 
   cprintf("Stack pages: %d\n", curproc->stackPages);
